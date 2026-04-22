@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store inventory</title>
+</head>
+
+<body>
+    <main class="main">
+        <header class="header">
+            <h1 class="title">Inventory</h1>
+            <button class="btn" id="addProduct">
+                <img src="./assets/icons/plus-solid.png" alt="Plus icon" class="icon">
+                <span>Add Product</span>
+            </button>
+        </header>
+        <section class="container card-resume">
+            <article class="card">
+                <div class="card-content">
+                    <p>Total Asset Value</p>
+                    <span class="total" id="total">$0.00</span>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-content">
+                    <div class="total-products">
+                        <span id="totalProducts">0</span>
+                        <p>Product</p>
+                    </div>
+                    <div class="progress-products">
+                        <div class="progress-product product--in-stock" id="inStockProgress"></div>
+                        <div class="progress-product product--low-stock" id="lowStockProgress"></div>
+                        <div class="progress-product product--out-stock" id="outStockProgress"></div>
+                    </div>
+                    <div class="statistic-products">
+                        <div class="statistic">
+                            <div class="progress-reference product--in-stock"></div>
+                            <p>In stock</p>
+                            <span id="productInStock">000</span>
+                        </div>
+                        <div class="statistic">
+                            <div class="progress-reference product--low-stock"></div>
+                            <p>Low stock</p>
+                            <span id="productLowStock">000</span>
+                        </div>
+                        <div class="statistic">
+                            <div class="progress-reference product--out-stock"></div>
+                            <p>Out of stock</p>
+                            <span id="productOutStock">000</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="container product-list">
+            <div class="filters">
+                <div class="searchbar">
+                    <label for="searchbar">Search products</label>
+                    <input class="input" type="text" name="searchbar" id="searchbar" placeholder="Search">
+                    <button type="button" aria-label="Search">
+                        <img src="./assets/icons/magnifying-glass-solid.png" alt="Search icon" class="icon">
+                    </button>
+                </div>
+                <div class="others">
+                    <select name="status" id="status" class="input">
+                        <option value="" disabled selected>Status</option>
+                        <option value="all">All</option>
+                        <option value="inStock">In stock</option>
+                        <option value="lowStock">Low stock</option>
+                        <option value="outStock">Out of stock</option>
+                    </select>
+                </div>
+            </div>
+            <div class="product-table">
+                <table>
+                    <thead class="table-heading">
+                        <tr>
+                            <th class="col">Product Name</th>
+                            <th class="col">Category</th>
+                            <th class="col">Stock</th>
+                            <th class="col">Status</th>
+                            <th class="col">Price</th>
+                            <th class="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="table-body">
+                        <tr class="empty-state">
+                            <td colspan="6">No data available</td>
+                        </tr>
+                        <tr class="product-row">
+                            <td class="cell cell--name">Lorem</td>
+                            <td class="cell cell--category">Category</td>
+                            <td class="cell cell--stock">10</td>
+                            <td class="cell cell--status status--in-stock">In stock</td>
+                            <td class="cell cell--price">$100</td>
+                            <td class="cell cell--actions">
+                                <button type="button" class="action-toggle" aria-label="Open actions">...</button>
+                                <div class="actions actions--hidden">
+                                    <button type="button" class="btn-edit">Edit</button>
+                                    <button type="button" class="btn-delete">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="product-row">
+                            <td class="cell cell--name">Lorem</td>
+                            <td class="cell cell--category">Category</td>
+                            <td class="cell cell--stock">10</td>
+                            <td class="cell cell--status status--low-stock">Low stock</td>
+                            <td class="cell cell--price">$100</td>
+                            <td class="cell cell--actions">
+                                <button type="button" class="action-toggle" aria-label="Open actions">...</button>
+                                <div class="actions actions--hidden">
+                                    <button type="button" class="btn-edit">Edit</button>
+                                    <button type="button" class="btn-delete">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="product-row">
+                            <td class="cell cell--name">Lorem</td>
+                            <td class="cell cell--category">Category</td>
+                            <td class="cell cell--stock">10</td>
+                            <td class="cell cell--status status--out-stock">Out of stock</td>
+                            <td class="cell cell--price">$100</td>
+                            <td class="cell cell--actions">
+                                <button type="button" class="action-toggle" aria-label="Open actions">...</button>
+                                <div class="actions actions--hidden">
+                                    <button type="button" class="btn-edit">Edit</button>
+                                    <button type="button" class="btn-delete">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
