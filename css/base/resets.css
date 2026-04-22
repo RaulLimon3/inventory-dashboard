@@ -1,0 +1,36 @@
+* {
+    margin: var(--space-0);
+    padding: var(--space-0);
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--text-base);
+}
+
+body {
+    font-family: var(--font-family-base);
+    line-height: var(--leading-relaxed);
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}

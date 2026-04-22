@@ -1,0 +1,188 @@
+:root {
+    /* ===== RAW COLORS ===== */
+
+    --gray-50: #F8F9FA;
+    --gray-100: #E9ECEF;
+    --gray-200: #DEE2E6;
+    --gray-300: #CED4DA;
+    --gray-400: #ADB5BD;
+    --gray-500: #6C757D;
+    --gray-700: #495057;
+    --gray-800: #343A40;
+    --gray-900: #212529;
+
+    --red: #EF476F;
+    --yellow: #FFD166;
+    --green: #06D6A0;
+    --blue: #118AB2;
+    --teal: #073B4C;
+
+    /* ===== THEME: LIGHT ===== */
+
+    --color-bg: var(--gray-50);
+    --color-surface: #ffffff;
+    --color-border: var(--gray-200);
+
+    --color-text-primary: var(--gray-900);
+    --color-text-secondary: var(--gray-500);
+
+    --color-primary: var(--blue);
+    --color-primary-hover: #0f7a9c;
+
+    --color-secondary: var(--teal);
+
+    --color-success: var(--green);
+    --color-warning: var(--yellow);
+    --color-error: var(--red);
+
+    /* Fonts */
+
+    --font-family-base: 'Stack Sans Text', system-ui, -apple-system, sans-serif;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --leading-tight: 1.2;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.7;
+    --tracking-tight: -0.01em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.05em;
+
+    --font-body: var(--text-base);
+    --font-small: var(--text-sm);
+    --font-heading-weight: var(--font-semibold);
+    --font-body-weight: var(--font-regular);
+
+    /* spacing */
+
+    --space-0: 0;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 2.5rem;
+    --space-8: 3rem;
+    --space-9: 4rem;
+    
+    --spacing-card: var(--space-4);
+    --spacing-section: var(--space-8);
+    --spacing-container: var(--space-6);
+    --spacing-gap: var(--space-4);
+
+    /* borders */
+
+    --border-0: 0;
+    --border-1: 1px;
+    --border-2: 2px;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-full: 999px;
+
+    --border-default: var(--color-border);
+    --border-strong: var(--gray-300);
+    --border-focus: var(--color-primary);
+    --divider: var(--border-1) solid var(--color-border);
+    --focus-ring: 0 0 0 3px rgba(17, 138, 178, 0.3);
+
+    /* Transitions */
+
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 350ms;
+    --ease-default: ease;
+    --ease-in: ease-in;
+    --ease-out: ease-out;
+    --ease-in-out: ease-in-out;
+
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --transition-fast: all var(--duration-fast) var(--ease-smooth);
+    --transition-normal: all var(--duration-normal) var(--ease-smooth);
+    --transition-slow: all var(--duration-slow) var(--ease-smooth);
+
+    /* Shadows */
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] {
+    --color-bg: var(--gray-900);
+    --color-surface: var(--gray-800);
+    --color-border: var(--gray-700);
+
+    --color-text-primary: var(--gray-50);
+    --color-text-secondary: var(--gray-400);
+
+    --color-primary: var(--blue);
+    --color-primary-hover: #0f7a9c;
+
+    --color-secondary: var(--teal);
+
+    --color-success: var(--green);
+    --color-warning: var(--yellow);
+    --color-error: var(--red);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* :root {
+    /* Colors */
+
+/* Grays */
+/* --gray-50: #F8F9FA;
+    --gray-100: #E9ECEF;
+    --gray-200: #DEE2E6;
+    --gray-300: #CED4DA;
+    --gray-400: #ADB5BD;
+    --gray-500: #6C757D;
+    --gray-700: #495057;
+    --gray-800: #343A40;
+    --gray-900: #212529; */
+
+/* Accents */
+/* --red: #EF476F;
+    --yellow: #FFD166;
+    --green: #06D6A0;
+    --blue: #118AB2;
+    --teal: #073B4C; */
+
+/* Theme light */
+/* --color-primary: #4f46e5;
+    --color-primary-light: #6366f1;
+    --color-primary-dark: #4338ca;
+    --color-bg: var(--gray-50);
+    --color-surface: #ffffff;
+    --color-border: var(--gray-200);
+
+    --color-text-primary: var(--gray-900);
+    --color-text-secondary: var(--gray-500);
+
+    --color-primary: var(--blue);
+    --color-secondary: var(--teal);
+
+    --color-success: var(--green);
+    --color-warning: var(--yellow);
+    --color-error: var(--red); */
+/* Fonts */
+/* spacing */
+/* borders */
+/* Transitions */
+/* } */
