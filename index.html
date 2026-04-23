@@ -20,18 +20,16 @@
                 <span>Add Product</span>
             </button>
         </header>
-        <section class="container card-resume">
-            <article class="card">
+        <section class="container">
+            <div class="card card-resume">
                 <div class="card-content">
-                    <p>Total Asset Value</p>
-                    <span class="total" id="total">$0.00</span>
+                    <p class="description">Total Asset Value</p>
+                    <span class="amount" id="total">$0.00</span>
                 </div>
-            </article>
-            <article class="card">
                 <div class="card-content">
                     <div class="total-products">
-                        <span id="totalProducts">0</span>
-                        <p>Product</p>
+                        <span class="amount" id="totalProducts">0</span>
+                        <p class="description">Products</p>
                     </div>
                     <div class="progress-products">
                         <div class="progress-product product--in-stock" id="inStockProgress"></div>
@@ -39,36 +37,36 @@
                         <div class="progress-product product--out-stock" id="outStockProgress"></div>
                     </div>
                     <div class="statistic-products">
-                        <div class="statistic">
+                        <div class="statistic flex-row">
                             <div class="progress-reference product--in-stock"></div>
-                            <p>In stock</p>
-                            <span id="productInStock">000</span>
+                            <p class="description">In stock:</p>
+                            <span class="amount" id="productInStock">000</span>
                         </div>
-                        <div class="statistic">
+                        <div class="statistic flex-row">
                             <div class="progress-reference product--low-stock"></div>
-                            <p>Low stock</p>
-                            <span id="productLowStock">000</span>
+                            <p class="description">Low stock:</p>
+                            <span class="amount" id="productLowStock">000</span>
                         </div>
-                        <div class="statistic">
+                        <div class="statistic flex-row">
                             <div class="progress-reference product--out-stock"></div>
-                            <p>Out of stock</p>
-                            <span id="productOutStock">000</span>
+                            <p class="description">Out of stock:</p>
+                            <span class="amount" id="productOutStock">000</span>
                         </div>
                     </div>
                 </div>
-            </article>
+            </div>
         </section>
-        <section class="container product-list">
+        <section class="container card product-list">
             <div class="filters">
-                <div class="searchbar">
+                <div class="inputs searchbar">
                     <label for="searchbar">Search products</label>
                     <input class="input" type="text" name="searchbar" id="searchbar" placeholder="Search">
                     <button type="button" aria-label="Search">
                         <img src="./assets/icons/magnifying-glass-solid.png" alt="Search icon" class="icon">
                     </button>
                 </div>
-                <div class="others">
-                    <select name="status" id="status" class="input">
+                <div class="inputs filter-group">
+                    <select class="form-select" name="status" id="status" class="input">
                         <option value="" disabled selected>Status</option>
                         <option value="all">All</option>
                         <option value="inStock">In stock</option>
@@ -102,8 +100,8 @@
                             <td class="cell cell--actions">
                                 <button type="button" class="action-toggle" aria-label="Open actions">...</button>
                                 <div class="actions actions--hidden">
-                                    <button type="button" class="btn-edit">Edit</button>
-                                    <button type="button" class="btn-delete">Delete</button>
+                                    <button type="button" class="btn btn-edit">Edit</button>
+                                    <button type="button" class="btn btn-delete">Delete</button>
                                 </div>
                             </td>
                         </tr>
@@ -116,8 +114,8 @@
                             <td class="cell cell--actions">
                                 <button type="button" class="action-toggle" aria-label="Open actions">...</button>
                                 <div class="actions actions--hidden">
-                                    <button type="button" class="btn-edit">Edit</button>
-                                    <button type="button" class="btn-delete">Delete</button>
+                                    <button type="button" class="btn btn-edit">Edit</button>
+                                    <button type="button" class="btn btn-delete">Delete</button>
                                 </div>
                             </td>
                         </tr>
@@ -130,8 +128,8 @@
                             <td class="cell cell--actions">
                                 <button type="button" class="action-toggle" aria-label="Open actions">...</button>
                                 <div class="actions actions--hidden">
-                                    <button type="button" class="btn-edit">Edit</button>
-                                    <button type="button" class="btn-delete">Delete</button>
+                                    <button type="button" class="btn btn-edit">Edit</button>
+                                    <button type="button" class="btn btn-delete">Delete</button>
                                 </div>
                             </td>
                         </tr>
@@ -140,6 +138,41 @@
             </div>
         </section>
     </main>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-heading">
+                <h2 class="title">Add Product</h2>
+                <button type="button" id="closeModal">
+                    <img src="./assets/icons/xmark-solid.png" alt="X mark icon" class="icon">
+                </button>
+            </div>
+            <form class="formProduct">
+                <div claform-group">
+                    <label for="product">Product name</label>
+                    <input class="input" type="text" name="product" id="product">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-select" name="category" id="category">
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothesAndFootweart">Clothing and Footwear</option>
+                        <option value="homeAndDecor">Home and Decor</option>
+                        <option value="personal">Personal Care</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="units">Number of units</label>
+                    <input class="input" type="number" name="units" id="units">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input class="input" type="number" name="price" id="price">
+                </div>
+                <button type="submit">Add product</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

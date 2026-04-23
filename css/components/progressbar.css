@@ -1,0 +1,33 @@
+.progress-products {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10px;
+    border-radius: var(--radius-md);
+}
+
+.progress-product {
+    height: 10px;
+    width: 33%;
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+}
+
+.progress-reference {
+    width: 5px;
+    height: 16px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+}
+
+.product--in-stock {
+    background: var(--color-success);
+}
+
+.product--low-stock {
+    background: var(--color-warning);
+}
+
+.product--out-stock {
+    background: var(--color-error);
+}
