@@ -3,3 +3,21 @@
     align-items: center;
     gap: var(--spacing-gap);
 }
+
+.form-control {
+    border: none;
+    outline: var(--divider);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-1);
+    height: 40px;
+    transition: outline 0.3s ease;
+}
+
+.form-control:hover {
+    outline: var(--border-1) solid var(--gray-400);
+}
+
+.form-control:focus {
+    outline: var(--border-1) solid var(--gray-800);
+}

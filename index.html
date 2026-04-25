@@ -58,15 +58,14 @@
         </section>
         <section class="container card product-list">
             <div class="filters">
-                <div class="inputs searchbar">
-                    <label for="searchbar">Search products</label>
-                    <input class="input" type="text" name="searchbar" id="searchbar" placeholder="Search">
-                    <button type="button" aria-label="Search">
+                <div class="searchbar">
+                    <input class="form-control searchbar-input" type="text" name="searchbar" id="searchbar" placeholder="Search">
+                    <button type="button" class="searchbar-btn" aria-label="Search">
                         <img src="./assets/icons/magnifying-glass-solid.png" alt="Search icon" class="icon">
                     </button>
                 </div>
                 <div class="inputs filter-group">
-                    <select class="form-select" name="status" id="status" class="input">
+                    <select class="form-control form-select" name="status" id="status" class="input">
                         <option value="" disabled selected>Status</option>
                         <option value="all">All</option>
                         <option value="inStock">In stock</option>
