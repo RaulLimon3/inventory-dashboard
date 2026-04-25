@@ -59,7 +59,8 @@
         <section class="container card product-list">
             <div class="filters">
                 <div class="searchbar">
-                    <input class="form-control searchbar-input" type="text" name="searchbar" id="searchbar" placeholder="Search">
+                    <input class="form-control searchbar-input" type="text" name="searchbar" id="searchbar"
+                        placeholder="Search">
                     <button type="button" class="searchbar-btn" aria-label="Search">
                         <img src="./assets/icons/magnifying-glass-solid.png" alt="Search icon" class="icon">
                     </button>
@@ -78,57 +79,36 @@
                 <table>
                     <thead class="table-heading">
                         <tr>
-                            <th class="col">Product Name</th>
-                            <th class="col">Category</th>
-                            <th class="col">Stock</th>
-                            <th class="col">Status</th>
-                            <th class="col">Price</th>
-                            <th class="col">Action</th>
+                            <th class="table-col">Product Name</th>
+                            <th class="table-col">Category</th>
+                            <th class="table-col">SKU</th>
+                            <th class="table-col">Stock</th>
+                            <th class="table-col">Status</th>
+                            <th class="table-col">Price</th>
+                            <th class="table-col txt-center">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody" class="table-body">
-                        <tr class="empty-state">
-                            <td colspan="6">No data available</td>
+                        <tr class="table-empty table-empty--hidden">
+                            <td colspan="7">No data available</td>
                         </tr>
                         <tr class="product-row">
-                            <td class="cell cell--name">Lorem</td>
-                            <td class="cell cell--category">Category</td>
-                            <td class="cell cell--stock">10</td>
-                            <td class="cell cell--status status--in-stock">In stock</td>
-                            <td class="cell cell--price">$100</td>
-                            <td class="cell cell--actions">
-                                <button type="button" class="action-toggle" aria-label="Open actions">...</button>
-                                <div class="actions actions--hidden">
-                                    <button type="button" class="btn btn-edit">Edit</button>
-                                    <button type="button" class="btn btn-delete">Delete</button>
-                                </div>
+                            <td class="cell">Test</td>
+                            <td class="cell">Test</td>
+                            <td class="cell">Test</td>
+                            <td class="cell">Test</td>
+                            <td class="cell cell--status">
+                                <span class="status-badge status-badge--in-stock">In stock</span>
                             </td>
-                        </tr>
-                        <tr class="product-row">
-                            <td class="cell cell--name">Lorem</td>
-                            <td class="cell cell--category">Category</td>
-                            <td class="cell cell--stock">10</td>
-                            <td class="cell cell--status status--low-stock">Low stock</td>
-                            <td class="cell cell--price">$100</td>
-                            <td class="cell cell--actions">
-                                <button type="button" class="action-toggle" aria-label="Open actions">...</button>
-                                <div class="actions actions--hidden">
-                                    <button type="button" class="btn btn-edit">Edit</button>
-                                    <button type="button" class="btn btn-delete">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="product-row">
-                            <td class="cell cell--name">Lorem</td>
-                            <td class="cell cell--category">Category</td>
-                            <td class="cell cell--stock">10</td>
-                            <td class="cell cell--status status--out-stock">Out of stock</td>
-                            <td class="cell cell--price">$100</td>
-                            <td class="cell cell--actions">
-                                <button type="button" class="action-toggle" aria-label="Open actions">...</button>
-                                <div class="actions actions--hidden">
-                                    <button type="button" class="btn btn-edit">Edit</button>
-                                    <button type="button" class="btn btn-delete">Delete</button>
+                            <td class="cell">Test</td>
+                            <td class="cell txt-center">
+                                <div class="dropdown-container">
+                                    <button type="button" class="dropdown-toggle" aria-label="Open actions">⋯</button>
+                                    <div class="dropdown dropdown--hidden">
+                                        <button type="button" class="dropdown-item">Edit</button>
+                                        <button type="button"
+                                            class="dropdown-item dropdown-item--danger">Delete</button>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

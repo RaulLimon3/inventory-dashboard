@@ -21,3 +21,7 @@
 .form-control:focus {
     outline: var(--border-1) solid var(--gray-800);
 }
+
+.txt-center {
+    text-align: center;
+}

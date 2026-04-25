@@ -1,0 +1,135 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-heading {
+    background: var(--gray-100);
+}
+
+.table-col {
+    padding: var(--space-3);
+    text-align: left;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+}
+
+.table-empty td {
+    height: 300px;
+    text-align: center;
+    padding: var(--space-4);
+    color: var(--color-text-secondary);
+}
+
+.table-empty--hidden {
+    display: none;
+}
+
+.product-row {
+    border-bottom: var(--divider);
+    background: none;
+    transition: background 0.2s ease;
+}
+
+.product-row:hover {
+    background: var(--gray-50);
+}
+
+.cell {
+    padding: var(--space-3);
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+}
+
+.status-badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.status-badge--in-stock {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--color-success);
+}
+
+.status-badge--low-stock {
+    background: rgba(234, 179, 8, 0.1);
+    color: var(--color-warning);
+}
+
+.status-badge--out-stock {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--color-error);
+}
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    font-size: var(--text-xl);
+    padding: var(--space-1);
+    border-radius: var(--radius-sm);
+    padding: 0 var(--space-3);
+    background: none;
+    transition: background 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+    background: var(--gray-100);
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: var(--space-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: 120px;
+    padding: var(--space-2);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    z-index: 20;
+}
+
+.dropdown-item {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--text-sm);
+    transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: var(--gray-100);
+}
+
+.dropdown-item--danger {
+    color: var(--color-error);
+}
+
+.dropdown-item--danger:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.dropdown--hidden {
+    display: none;
+}
