@@ -10,15 +10,15 @@
 }
 
 .input:hover {
-    border-color: var(--border-1) solid var(--gray-400);
+    border-color: var(--gray-400);
 }
 
 .input:focus {
-    border-color: var(--border-1) solid var(--gray-800);
+    border-color: var(--gray-800);
 }
 
 .input--danger {
-    border-color: var(--border-1) solid var(--red);
+    border-color: var(--red);
 }
 
 .input--select {
