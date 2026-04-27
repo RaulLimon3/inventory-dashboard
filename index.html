@@ -117,22 +117,22 @@
             </div>
         </section>
     </main>
-    <div class="modal" id="modal">
+    <div class="modal modal--active" id="modal">
         <div class="modal-content">
             <div class="modal-heading">
-                <h2 class="title">Add Product</h2>
-                <button type="button" id="closeModal">
+                <h2 class="modal-title">Add Product</h2>
+                <button type="button" class="modal-btn" id="closeModal">
                     <img src="./assets/icons/xmark-solid.png" alt="X mark icon" class="icon">
                 </button>
             </div>
-            <form class="formProduct">
-                <div claform-group">
+            <form class="form-product">
+                <div class="form-group">
                     <label for="product">Product name</label>
                     <input class="input" type="text" name="product" id="product">
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <select class="form-select" name="category" id="category">
+                    <select class="form-select form-control" name="category" id="category">
                         <option value="" disabled selected>Select a category</option>
                         <option value="electronics">Electronics</option>
                         <option value="clothesAndFootweart">Clothing and Footwear</option>

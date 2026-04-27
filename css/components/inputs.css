@@ -1,0 +1,22 @@
+.input {
+    appearance: none;
+    font-size: var(--text-lg);
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    border: var(--divider);
+    box-shadow: var(--shadow-md);
+    transition: border-color 0.3s ease;
+    outline: none;
+}
+
+.input:hover {
+    border-color: var(--border-1) solid var(--gray-400);
+}
+
+.input:focus {
+    border-color: var(--border-1) solid var(--gray-800);
+}
+
+.input--danger {
+    border-color: var(--border-1) solid var(--red);
+}

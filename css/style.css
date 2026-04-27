@@ -8,4 +8,6 @@
 @import url('./components/progressbar.css');
 @import url('./components/searchbar.css');
 @import url('./components/table.css');
+@import url('./components/modal.css');
+@import url('./components/inputs.css');
 @import url('./utilities/helpers.css');

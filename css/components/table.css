@@ -104,7 +104,7 @@ table {
     background: var(--color-surface);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
-    z-index: 20;
+    z-index: 2;
 }
 
 .dropdown-item {
