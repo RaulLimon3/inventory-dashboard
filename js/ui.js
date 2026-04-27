@@ -107,4 +107,14 @@ const validateForm = () => {
     );
 };
 
-export { initModalEventes, validateForm, closeModal };
+// Extraemos los valores
+const getFormData = () => {
+    return {
+        name: productInput.value.trim(),
+        category: categorySelect.value,
+        stock: Number(unitsInput.value),
+        price: Number(priceInput.value)
+    };
+};
+
+export { initModalEventes, validateForm, closeModal, getFormData };

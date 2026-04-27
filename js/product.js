@@ -1,4 +1,4 @@
-class Product {
+export default class Product {
     // Establecemos nuestros valores
     static categories = ['electronics', 'clothesAndFootwear', 'homeAndDecor', 'personal'];
     static currentId = 1;
