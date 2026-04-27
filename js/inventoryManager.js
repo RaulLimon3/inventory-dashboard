@@ -7,10 +7,15 @@ export default class inventoryManager {
         this.products = this.loadFromStorage();
     }
 
+    // Obtenemos los datos
+    getProducts() {
+        return this.products;
+    }
+
     // Agregamos producto
     addProduct(name, category, stock, price) {
         const product = new Product(name, category, stock, price);
-        this.products.unshift(product)
+        this.products.push(product)
         this.saveToStorage();
         return product;
     }

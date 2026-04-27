@@ -6,6 +6,8 @@ const productInput = document.getElementById('product');
 const categorySelect = document.getElementById('category');
 const unitsInput = document.getElementById('units');
 const priceInput = document.getElementById('price');
+const table = document.getElementById('tableBody');
+const emptyTable = document.getElementById('emptyTable');
 
 /* Modal */
 
@@ -66,7 +68,7 @@ const validateProduct = () => {
 // Validamos las unidades
 const validateUnits = () => {
     const value = unitsInput.value.trim();
-    const unitsRegex = /^[1-9]\d*$/;
+    const unitsRegex = /^(0|[1-9]\d*)$/;
     if (!validateEmptyValues(value, unitsInput)) return false;
     return validateWithRegex(value, unitsInput, unitsRegex);
 };
@@ -117,4 +119,60 @@ const getFormData = () => {
     };
 };
 
-export { initModalEventes, validateForm, closeModal, getFormData };
+// Mostramos los datos
+const renderProducts = (products) => {
+
+    // Verificamos que existan datos guardados
+    if (products.length === 0) {
+        emptyTable.classList.add('table-empty');
+        return;
+    }
+
+    // Limpiamos la tabla
+    table.innerHTML = '';
+
+    // Mostramos los datos
+    products.forEach(product => {
+        const row = document.createElement('tr');
+        row.classList.add('product-row');
+        row.dataset.id = product.id;
+        const statusClass = getStatusClass(product.status);
+        row.innerHTML = `
+            <td class="cell">${product.name}</td>
+            <td class="cell">${product.category}</td>
+            <td class="cell">${product.sku}</td>
+            <td class="cell">${product.stock}</td>
+            <td class="cell cell--status">
+                <span class="status-badge ${statusClass}">${product.status}</span></td>
+            <td class="cell">$${product.price.toFixed(2)}</td>
+            <td class="cell txt-center">
+                <div class="dropdown-container">
+                    <button type="button" class="dropdown-toggle">⋯</button>
+                    <div class="dropdown dropdown--hidden">
+                        <button type="button" class="dropdown-item">Edit</button>
+                        <button type="button" class="dropdown-item dropdown-item--danger" data-id="${product.id}">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </td>
+        `;
+        table.appendChild(row);
+    });
+};
+
+// Mostramos diseño dinamico para el status
+const getStatusClass = (status) => {
+    switch (status) {
+        case 'In stock':
+            return 'status-badge--in-stock';
+        case 'Low stock':
+            return 'status-badge--low-stock';
+        case 'Out of stock':
+            return 'status-badge--out-stock';
+        default:
+            return '';
+    }
+}
+
+export { initModalEventes, validateForm, closeModal, getFormData, renderProducts };

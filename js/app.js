@@ -1,6 +1,6 @@
 // Importamos nuestras funciones
 import inventoryManager from "./inventoryManager.js";
-import { closeModal, getFormData, initModalEventes, validateForm} from "./ui.js";
+import { closeModal, getFormData, initModalEventes, renderProducts, validateForm} from "./ui.js";
 
 // Mostramos el modal
 initModalEventes();
@@ -10,6 +10,9 @@ const form = document.querySelector('.form-product');
 
 // Creamos nuestro objeto
 const manager = new inventoryManager();
+
+// Mostramos los registros guardados
+renderProducts(manager.getProducts());
 
 // Espreamos a que de clic en submit
 form.addEventListener('submit', (e) => {
@@ -21,10 +24,10 @@ form.addEventListener('submit', (e) => {
     // Guardamos el producto
     const { name, category, stock, price } = getFormData();
     manager.addProduct(name, category, stock, price);
-    console.log('Producto agregado');
-    // Renderizamos el producot
+    // Renderizamos el producto
+    renderProducts(manager.getProducts());
     // Limpiamos el formulario
     form.reset();
     // Cerramos el modal
     closeModal()
-})
+});
