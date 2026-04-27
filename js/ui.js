@@ -107,4 +107,4 @@ const validateForm = () => {
     );
 };
 
-export { initModalEventes, validateForm };
+export { initModalEventes, validateForm, closeModal };
