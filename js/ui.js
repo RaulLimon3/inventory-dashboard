@@ -45,6 +45,40 @@ const validateEmptyValues = (value, inputName) => {
     return true;
 };
 
+// Validamos el formato 
+const validateWithRegex = (value, input, regex) => {
+    if (!regex.test(value)) {
+        setError(input);
+        return false;
+    }
+    removeError(input);
+    return true;
+}
+
+// Validamos el producto
+const validateProduct = () => {
+    const value = productInput.value.trim();
+    const productRegex = /^[a-zA-Z0-9\s\-_.]{3,50}$/;
+    if (!validateEmptyValues(value, productInput)) return false;
+    return validateWithRegex(value, productInput, productRegex);
+};
+
+// Validamos las unidades
+const validateUnits = () => {
+    const value = unitsInput.value.trim();
+    const unitsRegex = /^[1-9]\d*$/;
+    if (!validateEmptyValues(value, unitsInput)) return false;
+    return validateWithRegex(value, unitsInput, unitsRegex);
+};
+
+// Validamos el precio
+const validatePrice = () => {
+    const value = priceInput.value.trim();
+    const priceRegex = /^(?:0|[1-9]\d*)(\.\d{1,2})?$/;
+    if (!validateEmptyValues(value, priceInput)) return false;
+    return validateWithRegex(value, priceInput, priceRegex);
+};
+
 // Mostramos el error
 const setError = (input) => {
     input.classList.add('input--danger');
@@ -59,14 +93,14 @@ const removeError = (input) => {
 
 const validateForm = () => {
     // Validamos los campos del formulario
-    const isProductValid = validateField(productInput);
+    const isProductValid = validateProduct();
     const isCategoryValid = validateField(categorySelect);
-    const isUnitsValid = validateField(unitsInput);
-    const isPriceValid = validateField(priceInput);
+    const isUnitsValid = validateUnits();
+    const isPriceValid = validatePrice();
 
     // Devolvemos los valores
     return (
-        isPriceValid &&
+        isProductValid &&
         isCategoryValid &&
         isUnitsValid &&
         isPriceValid

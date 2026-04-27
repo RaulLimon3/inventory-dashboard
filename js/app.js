@@ -13,4 +13,6 @@ form.addEventListener('submit', (e) => {
 
     // Validamos nuestro formulario
     if (!validateForm()) return;
+    console.log('Producto agregado');
+    form.reset();
 })
