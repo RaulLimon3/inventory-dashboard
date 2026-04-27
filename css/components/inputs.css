@@ -20,3 +20,15 @@
 .input--danger {
     border-color: var(--border-1) solid var(--red);
 }
+
+.input--select {
+    background-image: url('../../assets/icons/chevron-down.png');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    color: var(--color-text-secondary);
+}
+
+.input--select option {
+    color: var(--color-text-primary);
+}
