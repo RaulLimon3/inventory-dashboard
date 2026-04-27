@@ -8,17 +8,29 @@ const unitsInput = document.getElementById('units');
 const priceInput = document.getElementById('price');
 const table = document.getElementById('tableBody');
 const emptyTable = document.getElementById('emptyTable');
+const form = document.querySelector('.form-product');
 
 /* Modal */
 
 // Abrimos el modal
 const openModal = () => {
+    clearForm();
     modal.classList.add('modal--active');
 };
 
 // Cerramos modal
 const closeModal = () => {
     modal.classList.remove('modal--active');
+    clearForm();
+};
+
+// Limpiamos campos cuando se cierre el modal
+const clearForm = () => {
+    form.reset();
+    const inputs = document.querySelectorAll('.input');
+    inputs.forEach(input => {
+        input.classList.remove('input--danger');
+    });
 };
 
 // Esperamos a que el usuario di clic sobre los botones
