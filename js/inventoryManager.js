@@ -20,6 +20,12 @@ export default class inventoryManager {
         return product;
     }
 
+    // Borramos el producto
+    removeProduct(id) {
+        this.products = this.products.filter(product => product.id !== id);
+        this.saveToStorage();
+    }
+
     // Guardamos en localStorage
     saveToStorage() {
         localStorage.setItem('products', JSON.stringify(this.products));

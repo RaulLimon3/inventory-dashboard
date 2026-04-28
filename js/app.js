@@ -32,6 +32,7 @@ form.addEventListener('submit', (e) => {
     closeModal()
 });
 
+// Mostramos menu desplegable
 document.addEventListener('click', (e) => {
     // Hacemos clic sobre el boton
     const toggleBtn = e.target.closest('.dropdown-toggle')
@@ -60,4 +61,26 @@ const closeAllDropdowns = () => {
     document.querySelectorAll('.dropdown').forEach(drop => {
         drop.classList.add('dropdown--hidden');
     });
+};
+
+// Detectamos cuando se de clic en el boton de borrar
+document.addEventListener('click', (e) => {
+    // Accedemos al boton
+    const deleteBtn = e.target.closest('.dropdown-item--danger');
+
+    // Verificamos que se de clic sobre el botn
+    if (!deleteBtn) return;
+
+    // Obtenemos el id 
+    const row = deleteBtn.closest('tr');
+    const id = Number(row.dataset.id);
+
+    // Eliminamos el producto
+    handleDelete(id);
+    closeAllDropdowns();
+});
+
+const handleDelete = (id) => {
+    manager.removeProduct(id);
+    renderProducts(manager.getProducts());
 };
