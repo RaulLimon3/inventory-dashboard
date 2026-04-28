@@ -31,3 +31,33 @@ form.addEventListener('submit', (e) => {
     // Cerramos el modal
     closeModal()
 });
+
+document.addEventListener('click', (e) => {
+    // Hacemos clic sobre el boton
+    const toggleBtn = e.target.closest('.dropdown-toggle')
+    // Verificamos que sea el boton
+    if (toggleBtn) {
+        // Accedemos a su contenedor padre
+        const container = toggleBtn.closest('.dropdown-container');
+        // Accedemos al contenido a desplegar
+        const dropdown = container.querySelector('.dropdown');
+        // Validamos que no tenga la clase que oculta el menu
+        const isOpen = !dropdown.classList.contains('dropdown--hidden');
+        // Cerramos los menus
+        closeAllDropdowns();
+        // Verificamos que no este oculto el menu
+        if (!isOpen) {
+            // Mostramos menu
+            dropdown.classList.remove('dropdown--hidden');
+        }
+
+        return;
+    }
+    closeAllDropdowns();
+});
+
+const closeAllDropdowns = () => {
+    document.querySelectorAll('.dropdown').forEach(drop => {
+        drop.classList.add('dropdown--hidden');
+    });
+};
