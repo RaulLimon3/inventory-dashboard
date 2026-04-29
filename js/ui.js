@@ -11,6 +11,7 @@ const emptyTable = document.getElementById('emptyTable');
 const form = document.querySelector('.form-product');
 const modalTitle = document.querySelector('.modal-title');
 const modalBtn = document.querySelector('.btn-add');
+const total = document.getElementById('total');
 
 /* Modal */
 
@@ -134,7 +135,7 @@ const getFormData = () => {
     };
 };
 
-// Mostramos los datos
+// Mostramos los productos
 const renderProducts = (products) => {
 
     // Verificamos que existan datos guardados
@@ -159,7 +160,7 @@ const renderProducts = (products) => {
             <td class="cell">${product.stock}</td>
             <td class="cell cell--status">
                 <span class="status-badge ${statusClass}">${product.status}</span></td>
-            <td class="cell">$${product.price.toFixed(2)}</td>
+            <td class="cell">$${product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
             <td class="cell txt-center">
                 <div class="dropdown-container">
                     <button type="button" class="dropdown-toggle">⋯</button>
@@ -175,6 +176,13 @@ const renderProducts = (products) => {
         table.appendChild(row);
     });
 };
+
+// Mostramos el total del inventario
+const renderTotal = (totalAmount) => {
+    total.textContent = `$${totalAmount.toLocaleString('en-US', {
+        minimumFractionDigits: 2
+    })}`;
+}
 
 // Mostramos diseño dinamico para el status
 const getStatusClass = (status) => {
@@ -207,4 +215,8 @@ const setFormMode = (isEdit) => {
     }
 }
 
-export { initModalEventes, validateForm, closeModal, getFormData, renderProducts, openModal, fillForm, setFormMode };
+export {
+    initModalEventes, validateForm, closeModal,
+    getFormData, renderProducts, openModal, fillForm,
+    setFormMode, renderTotal
+};

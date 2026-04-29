@@ -38,6 +38,11 @@ export default class inventoryManager {
         this.saveToStorage();
     }
 
+    // Calculamos el total del inventario
+    getTotal() {
+        return this.products.reduce((total, product) => total + (product.price * product.stock), 0);
+    }
+
     // Obtenemos el id del producto
     getProductById(id) {
         return this.products.find(p => p.id === id);
