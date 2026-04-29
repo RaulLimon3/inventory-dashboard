@@ -16,6 +16,9 @@ const totalProducts = document.getElementById('totalProducts');
 const productInStock = document.getElementById('productInStock');
 const productLowStock = document.getElementById('productLowStock');
 const productOutStock = document.getElementById('productOutStock');
+const inStockProgress = document.getElementById('inStockProgress');
+const lowStockProgress = document.getElementById('lowStockProgress');
+const outStockProgress = document.getElementById('outStockProgress');
 
 /* Modal */
 
@@ -202,18 +205,19 @@ const renderSummary = (summary) => {
     renderStockSummary(productOutStock, summary.outOfStock);
 }
 
-// const renderInStock = (count) => {
-//     renderStockSummary(productInStock, count);
-// }
-// const renderLowStock = (count) => {
-//     renderStockSummary(productLowStock, count);
-// }
-// const renderOutStock = (count) => {
-//     renderStockSummary(productOutStock, count);
-// }
-
 const renderStockSummary = (input, stockSummary) => {
     input.textContent = stockSummary;
+}
+
+// Hacemos la grafica dinamica
+
+const renderStockBars = (summary, total) => {
+    const inStock = total ? (summary.inStock / total) * 100 : 0;
+    const lowStock = total ? (summary.lowStock / total) * 100 : 0;
+    const outStock = total ? (summary.outOfStock / total) * 100 : 0;
+    inStockProgress.style.width = `${inStock * 10}%`;
+    lowStockProgress.style.width = `${lowStock * 10}%`;
+    outStockProgress.style.width = `${outStock * 10}%`; 
 }
 
 // Mostramos diseño dinamico para el status
@@ -251,5 +255,5 @@ export {
     initModalEventes, validateForm, closeModal,
     getFormData, renderProducts, openModal, fillForm,
     setFormMode, renderTotal, renderTotalStock,
-    renderSummary
+    renderSummary, renderStockBars
 };

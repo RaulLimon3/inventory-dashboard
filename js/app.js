@@ -1,7 +1,7 @@
 // Importamos nuestras funciones
 import inventoryManager from "./inventoryManager.js";
 import { closeModal, fillForm, getFormData, initModalEventes, 
-    openModal, renderProducts, renderSummary, renderTotal, 
+    openModal, renderProducts, renderStockBars, renderSummary, renderTotal, 
     renderTotalStock, setFormMode, validateForm} from "./ui.js";
 
 // Mostramos el modal
@@ -15,6 +15,10 @@ const manager = new inventoryManager();
 
 let editProductId = null;
 
+// Calculamos el porcentaje
+const summary = manager.getStockSummary();
+const total = manager.getTotalStock();
+
 // Mostramos los registros guardados
 renderProducts(manager.getProducts());
 
@@ -26,6 +30,8 @@ renderTotalStock(manager.getTotalStock());
 
 // Mostramos el total de productos en stock
 renderSummary(manager.getStockSummary());
+
+renderStockBars(summary, total);
 
 // Espreamos a que de clic en submit
 form.addEventListener('submit', (e) => {
@@ -111,6 +117,7 @@ const updateUi = () => {
     renderTotal(manager.getTotal());
     renderTotalStock(manager.getTotalStock());
     renderSummary(manager.getStockSummary());
+    renderStockBars(manager.getStockSummary(), manager.getTotalStock());
 }
 
 document.addEventListener('click', (e) => {

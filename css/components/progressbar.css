@@ -1,16 +1,16 @@
 .progress-products {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 10px;
     border-radius: var(--radius-md);
+    overflow: hidden;
 }
 
 .progress-product {
     height: 10px;
-    width: 33%;
     border-radius: var(--radius-md);
     background: var(--color-bg);
+    transition: width 0.4s ease;
 }
 
 .progress-reference {
