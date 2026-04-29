@@ -48,6 +48,21 @@ export default class inventoryManager {
         return this.products.reduce((total, product) => total + product.stock, 0);
     }
 
+    // Calculamos el total de productos en base a su status
+    getStockSummary() {
+        return this.products.reduce((acc, product) => {
+            if (product.status === 'In stock') acc.inStock++;
+            else if (product.status === 'Low stock') acc.lowStock++;
+            else acc.outOfStock++;
+            return acc;
+        }, {
+            inStock: 0, lowStock: 0, outOfStock: 0
+        });
+    }
+    getStockProducts() {
+        return this.products.filter(product => product.status === 'In stock').length;
+    }
+    
     // Obtenemos el id del producto
     getProductById(id) {
         return this.products.find(p => p.id === id);

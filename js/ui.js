@@ -13,6 +13,9 @@ const modalTitle = document.querySelector('.modal-title');
 const modalBtn = document.querySelector('.btn-add');
 const total = document.getElementById('total');
 const totalProducts = document.getElementById('totalProducts');
+const productInStock = document.getElementById('productInStock');
+const productLowStock = document.getElementById('productLowStock');
+const productOutStock = document.getElementById('productOutStock');
 
 /* Modal */
 
@@ -192,6 +195,27 @@ const renderTotalStock = (totalStock) => {
     totalProducts.textContent = totalStock;
 }
 
+// Mostamos el total de productos en stock
+const renderSummary = (summary) => {
+    renderStockSummary(productInStock, summary.inStock);
+    renderStockSummary(productLowStock, summary.lowStock);
+    renderStockSummary(productOutStock, summary.outOfStock);
+}
+
+// const renderInStock = (count) => {
+//     renderStockSummary(productInStock, count);
+// }
+// const renderLowStock = (count) => {
+//     renderStockSummary(productLowStock, count);
+// }
+// const renderOutStock = (count) => {
+//     renderStockSummary(productOutStock, count);
+// }
+
+const renderStockSummary = (input, stockSummary) => {
+    input.textContent = stockSummary;
+}
+
 // Mostramos diseño dinamico para el status
 const getStatusClass = (status) => {
     switch (status) {
@@ -226,5 +250,6 @@ const setFormMode = (isEdit) => {
 export {
     initModalEventes, validateForm, closeModal,
     getFormData, renderProducts, openModal, fillForm,
-    setFormMode, renderTotal, renderTotalStock
+    setFormMode, renderTotal, renderTotalStock,
+    renderSummary
 };

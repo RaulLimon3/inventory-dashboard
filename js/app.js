@@ -1,6 +1,8 @@
 // Importamos nuestras funciones
 import inventoryManager from "./inventoryManager.js";
-import { closeModal, fillForm, getFormData, initModalEventes, openModal, renderProducts, renderTotal, renderTotalStock, setFormMode, validateForm} from "./ui.js";
+import { closeModal, fillForm, getFormData, initModalEventes, 
+    openModal, renderProducts, renderSummary, renderTotal, 
+    renderTotalStock, setFormMode, validateForm} from "./ui.js";
 
 // Mostramos el modal
 initModalEventes();
@@ -22,6 +24,9 @@ renderTotal(manager.getTotal());
 // Mostramos el total de productos
 renderTotalStock(manager.getTotalStock());
 
+// Mostramos el total de productos en stock
+renderSummary(manager.getStockSummary());
+
 // Espreamos a que de clic en submit
 form.addEventListener('submit', (e) => {
     // Evitamos que el formulario se envie
@@ -40,9 +45,7 @@ form.addEventListener('submit', (e) => {
         manager.addProduct(name, category, stock, price);
     }
     // Renderizamos el producto
-    renderProducts(manager.getProducts());
-    renderTotal(manager.getTotal());
-    renderTotalStock(manager.getTotalStock());
+    updateUi();
     // Limpiamos el formulario
     form.reset();
     // Cerramos el modal
@@ -99,10 +102,16 @@ document.addEventListener('click', (e) => {
 
 const handleDelete = (id) => {
     manager.removeProduct(id);
+    updateUi();
+};
+
+// Actualizamos interfaz
+const updateUi = () => {
     renderProducts(manager.getProducts());
     renderTotal(manager.getTotal());
     renderTotalStock(manager.getTotalStock());
-};
+    renderSummary(manager.getStockSummary());
+}
 
 document.addEventListener('click', (e) => {
     // Accedemos al boton de eliminar de nuestro menu de acciones
