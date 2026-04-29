@@ -26,6 +26,23 @@ export default class inventoryManager {
         this.saveToStorage();
     }
 
+    // Actualizar el producto
+    updateProduct(id, name, category, stock, price) {
+        const product = this.getProductById(id);
+        if (!product) return;
+        product.name = name;
+        product.category = category;
+        product.stock = stock;
+        product.price = price;
+
+        this.saveToStorage();
+    }
+
+    // Obtenemos el id del producto
+    getProductById(id) {
+        return this.products.find(p => p.id === id);
+    }
+
     // Guardamos en localStorage
     saveToStorage() {
         localStorage.setItem('products', JSON.stringify(this.products));
@@ -37,7 +54,7 @@ export default class inventoryManager {
         const data = localStorage.getItem('products');
         // Si no hay, lo guardamos en un arreglo
         if (!data) return [];
-        
+
         // Convertimos el dato a un objeto JS
         const parseData = JSON.parse(data);
 

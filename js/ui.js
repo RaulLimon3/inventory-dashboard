@@ -9,11 +9,14 @@ const priceInput = document.getElementById('price');
 const table = document.getElementById('tableBody');
 const emptyTable = document.getElementById('emptyTable');
 const form = document.querySelector('.form-product');
+const modalTitle = document.querySelector('.modal-title');
+const modalBtn = document.querySelector('.btn-add');
 
 /* Modal */
 
 // Abrimos el modal
 const openModal = () => {
+    setFormMode(false);
     clearForm();
     modal.classList.add('modal--active');
 };
@@ -161,7 +164,7 @@ const renderProducts = (products) => {
                 <div class="dropdown-container">
                     <button type="button" class="dropdown-toggle">⋯</button>
                     <div class="dropdown dropdown--hidden">
-                        <button type="button" class="dropdown-item">Edit</button>
+                        <button type="button" class="dropdown-item dropdown-item--edit">Edit</button>
                         <button type="button" class="dropdown-item dropdown-item--danger" data-id="${product.id}">
                             Delete
                         </button>
@@ -187,4 +190,21 @@ const getStatusClass = (status) => {
     }
 }
 
-export { initModalEventes, validateForm, closeModal, getFormData, renderProducts };
+const fillForm = (product) => {
+    productInput.value = product.name;
+    categorySelect.value = product.category;
+    unitsInput.value = product.stock;
+    priceInput.value = product.price;
+};
+
+const setFormMode = (isEdit) => {
+    if (isEdit) {
+        modalTitle.textContent = 'Edit Product';
+        modalBtn.textContent = 'Save Changes';
+    } else {
+        modalTitle.textContent = 'Add Product';
+        modalBtn.textContent = 'Add Product';
+    }
+}
+
+export { initModalEventes, validateForm, closeModal, getFormData, renderProducts, openModal, fillForm, setFormMode };

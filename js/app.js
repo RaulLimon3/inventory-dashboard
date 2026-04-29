@@ -1,6 +1,6 @@
 // Importamos nuestras funciones
 import inventoryManager from "./inventoryManager.js";
-import { closeModal, getFormData, initModalEventes, renderProducts, validateForm} from "./ui.js";
+import { closeModal, fillForm, getFormData, initModalEventes, openModal, renderProducts, setFormMode, validateForm} from "./ui.js";
 
 // Mostramos el modal
 initModalEventes();
@@ -11,6 +11,8 @@ const form = document.querySelector('.form-product');
 // Creamos nuestro objeto
 const manager = new inventoryManager();
 
+let editProductId = null;
+
 // Mostramos los registros guardados
 renderProducts(manager.getProducts());
 
@@ -18,12 +20,19 @@ renderProducts(manager.getProducts());
 form.addEventListener('submit', (e) => {
     // Evitamos que el formulario se envie
     e.preventDefault();
-
     // Validamos nuestro formulario
     if (!validateForm()) return;
-    // Guardamos el producto
+    // Extramos los datos del formulario
     const { name, category, stock, price } = getFormData();
-    manager.addProduct(name, category, stock, price);
+    // Verificamos la accion a realizar
+    if (editProductId) {
+        // Actualizamos el producto
+        manager.updateProduct(editProductId, name, category, stock, price);
+        editProductId = null;
+        setFormMode(false);
+    } else {
+        manager.addProduct(name, category, stock, price);
+    }
     // Renderizamos el producto
     renderProducts(manager.getProducts());
     // Limpiamos el formulario
@@ -83,4 +92,36 @@ document.addEventListener('click', (e) => {
 const handleDelete = (id) => {
     manager.removeProduct(id);
     renderProducts(manager.getProducts());
+};
+
+document.addEventListener('click', (e) => {
+    // Accedemos al boton de eliminar de nuestro menu de acciones
+    const editBtn = e.target.closest('.dropdown-item--edit')
+
+    // Verificamos que se de clic
+    if (!editBtn) return;
+
+    // Extraemos el id de la fila
+    const row = editBtn.closest('tr');
+    const id = Number(row.dataset.id);
+
+    // Buscamos el producto por su id
+    const product = manager.getProductById(id);
+    if (!product) return;
+    // Abrimos el modal con los datos a editar
+    openEditModal(product);
+});
+
+const openEditModal = (product) => {
+    // Abrimos el modal
+    openModal();
+
+    // Le pasamos el id del producto
+    editProductId = product.id;
+
+    // Ponemos el valor en los campos
+    fillForm(product);
+
+    // Cambiamos el titulo del formulario
+    setFormMode(true);
 };
