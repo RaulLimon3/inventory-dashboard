@@ -9,11 +9,27 @@ initModalEventes();
 
 // Accedemos a nuestro formulario
 const form = document.querySelector('.form-product');
+// Accedemos a nuestro elemento para filtrar los productos
+const statusInput = document.getElementById('status');
 
 // Creamos nuestro objeto
 const manager = new inventoryManager();
 
 let editProductId = null;
+
+// Siempre mostramos todos los productos
+let currentFilter = 'all';
+
+// Creamos una funcion para aplicar los filtros
+const applyFilter = () => {
+    const filtered = manager.filterProducts(currentFilter);
+    renderProducts(filtered);
+};
+
+statusInput.addEventListener('change', (e) => {
+    currentFilter = e.target.value;
+    applyFilter();
+});
 
 // Calculamos el porcentaje
 const summary = manager.getStockSummary();
@@ -118,6 +134,7 @@ const updateUi = () => {
     renderTotalStock(manager.getTotalStock());
     renderSummary(manager.getStockSummary());
     renderStockBars(manager.getStockSummary(), manager.getTotalStock());
+    applyFilter();
 }
 
 document.addEventListener('click', (e) => {

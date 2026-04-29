@@ -40,8 +40,8 @@ export default class Product {
 
     // Calculamos el status
     get status() {
-        if (this.stock === 0) return 'Out of stock';
-        if (this.stock <= 5) return 'Low stock';
-        return 'In stock';
+        if (this.stock === 0) return 'outStock';
+        if (this.stock <= 5) return 'lowStock';
+        return 'inStock';
     }
 }

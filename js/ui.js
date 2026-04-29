@@ -223,11 +223,11 @@ const renderStockBars = (summary, total) => {
 // Mostramos diseño dinamico para el status
 const getStatusClass = (status) => {
     switch (status) {
-        case 'In stock':
+        case 'inStock':
             return 'status-badge--in-stock';
-        case 'Low stock':
+        case 'lowStock':
             return 'status-badge--low-stock';
-        case 'Out of stock':
+        case 'outStock':
             return 'status-badge--out-stock';
         default:
             return '';
