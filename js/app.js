@@ -1,6 +1,6 @@
 // Importamos nuestras funciones
 import inventoryManager from "./inventoryManager.js";
-import { closeModal, fillForm, getFormData, initModalEventes, openModal, renderProducts, renderTotal, setFormMode, validateForm} from "./ui.js";
+import { closeModal, fillForm, getFormData, initModalEventes, openModal, renderProducts, renderTotal, renderTotalStock, setFormMode, validateForm} from "./ui.js";
 
 // Mostramos el modal
 initModalEventes();
@@ -18,6 +18,9 @@ renderProducts(manager.getProducts());
 
 // Mostramos el total del inventario
 renderTotal(manager.getTotal());
+
+// Mostramos el total de productos
+renderTotalStock(manager.getTotalStock());
 
 // Espreamos a que de clic en submit
 form.addEventListener('submit', (e) => {
@@ -39,6 +42,7 @@ form.addEventListener('submit', (e) => {
     // Renderizamos el producto
     renderProducts(manager.getProducts());
     renderTotal(manager.getTotal());
+    renderTotalStock(manager.getTotalStock());
     // Limpiamos el formulario
     form.reset();
     // Cerramos el modal
@@ -97,6 +101,7 @@ const handleDelete = (id) => {
     manager.removeProduct(id);
     renderProducts(manager.getProducts());
     renderTotal(manager.getTotal());
+    renderTotalStock(manager.getTotalStock());
 };
 
 document.addEventListener('click', (e) => {

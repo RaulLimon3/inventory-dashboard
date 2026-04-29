@@ -12,6 +12,7 @@ const form = document.querySelector('.form-product');
 const modalTitle = document.querySelector('.modal-title');
 const modalBtn = document.querySelector('.btn-add');
 const total = document.getElementById('total');
+const totalProducts = document.getElementById('totalProducts');
 
 /* Modal */
 
@@ -135,6 +136,8 @@ const getFormData = () => {
     };
 };
 
+/* Mostramos los datos */
+
 // Mostramos los productos
 const renderProducts = (products) => {
 
@@ -184,6 +187,11 @@ const renderTotal = (totalAmount) => {
     })}`;
 }
 
+// Mostramos el total de productos
+const renderTotalStock = (totalStock) => {
+    totalProducts.textContent = totalStock;
+}
+
 // Mostramos diseño dinamico para el status
 const getStatusClass = (status) => {
     switch (status) {
@@ -218,5 +226,5 @@ const setFormMode = (isEdit) => {
 export {
     initModalEventes, validateForm, closeModal,
     getFormData, renderProducts, openModal, fillForm,
-    setFormMode, renderTotal
+    setFormMode, renderTotal, renderTotalStock
 };
