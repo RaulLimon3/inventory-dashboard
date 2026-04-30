@@ -8,6 +8,7 @@ const unitsInput = document.getElementById('units');
 const priceInput = document.getElementById('price');
 const table = document.getElementById('tableBody');
 const emptyTable = document.getElementById('emptyTable');
+const message = document.getElementById('message');
 const form = document.querySelector('.form-product');
 const modalTitle = document.querySelector('.modal-title');
 const modalBtn = document.querySelector('.btn-add');
@@ -145,16 +146,21 @@ const getFormData = () => {
 /* Mostramos los datos */
 
 // Mostramos los productos
-const renderProducts = (products) => {
+const renderProducts = (products, isSearching = false) => {
+
+    const rows = table.querySelectorAll('.product-row');
+    rows.forEach(row => row.remove());
 
     // Verificamos que existan datos guardados
     if (products.length === 0) {
-        emptyTable.classList.add('table-empty');
+        emptyTable.style.display = 'table-row';
+        message.textContent = isSearching ? 'No results found' : 'No data available'; 
         return;
     }
+    emptyTable.style.display = 'none';
 
     // Limpiamos la tabla
-    table.innerHTML = '';
+    // table.innerHTML = '';
 
     // Mostramos los datos
     products.forEach(product => {

@@ -39,7 +39,7 @@ const applyFilter = () => {
     }
 
     // Mostramos productos
-    renderProducts(products);
+    renderProducts(products, currentSearch !== '');
 };
 
 // Aplicamos los filtros por status
