@@ -82,15 +82,15 @@ export default class inventoryManager {
     }
 
     // Buscamos el producto por su nombre o SKU
-    searchProduct(query) {
+    searchProduct(query, products = this.products) {
         // Extraemos la palabra 
         const q = query.trim().toLowerCase();
 
         // Verificamos si esta vacio
-        if (!q) return this.products;
+        if (!q) return products;
 
         // Buscamos el producto
-        return this.products.filter(product => {
+        return products.filter(product => {
             return (
                 product.name.toLowerCase().includes(q) ||
                 product.sku.toLowerCase().includes(q)

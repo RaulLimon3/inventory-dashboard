@@ -35,10 +35,7 @@ const applyFilter = () => {
 
     // Filtramos por busqueda
     if (currentSearch) {
-        products = products.filter(product =>
-            product.name.toLowerCase().includes(currentSearch) ||
-            product.sku.toLowerCase().includes(currentSearch)
-        );
+        products = manager.searchProduct(currentSearch, products);
     }
 
     // Mostramos productos
