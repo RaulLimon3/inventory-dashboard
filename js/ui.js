@@ -155,7 +155,7 @@ const showSuccessState = (isEdit) => {
     // Mostramos el mensaje
     modalSuccess.classList.remove('fade--hidden');
     modalSuccess.classList.add('fade--visible');
-    successText.textContent = isEdit ? 
+    successText.textContent = isEdit ?
         'Product updated successfully' : 'Product added successfully';
     // Cerramos despues de un tiempo el modal
     setTimeout(() => {
@@ -192,9 +192,17 @@ const renderProducts = (products, isSearching = false) => {
     emptyTable.style.display = 'none';
 
     // Mostramos los datos
-    products.forEach(product => {
+    products.forEach((product, index) => {
         const row = document.createElement('tr');
         row.classList.add('product-row');
+        // Agregamos una animacion para mostrar los productos agregados
+        row.style.animationDelay = `${index * 0.05}s`;
+        void row.offsetWidth;
+        row.classList.add('new');
+        row.addEventListener('animationend', () => {
+            row.classList.remove('new');
+            row.style.animationDelay = '';
+        });
         row.dataset.id = product.id;
         const statusClass = getStatusClass(product.status);
         row.innerHTML = `
