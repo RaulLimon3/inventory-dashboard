@@ -1,6 +1,7 @@
 // Importamos nuestras funciones
 import inventoryManager from "./inventoryManager.js";
 import { closeModal, fillForm, getFormData, initModalEventes, 
+    openConfirmModal, 
     openModal, renderProducts, renderStockBars, renderSummary, renderTotal, 
     renderTotalStock, setFormMode, showSuccessState, validateForm} from "./ui.js";
 
@@ -151,7 +152,9 @@ document.addEventListener('click', (e) => {
     const id = Number(row.dataset.id);
 
     // Eliminamos el producto
-    handleDelete(id);
+    openConfirmModal(() => {
+        handleDelete(id);
+    });
     closeAllDropdowns();
 });
 

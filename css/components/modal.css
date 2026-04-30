@@ -60,7 +60,7 @@
     gap: var(--space-2);
 }
 
-.modal-success {
+.modal-alert {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,4 +82,17 @@
 .success {
     font-size: var(--text-3xl);
     font-weight: var(--font-bold);
+}
+
+.confirm-text {
+    font-weight: var(--font-bold);
+    font-size: var(--text-xl);
+}
+
+.confirm-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-gap);
+    width: 100%;
 }

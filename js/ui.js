@@ -15,6 +15,9 @@ const modalTitle = document.querySelector('.modal-title');
 const modalBtn = document.querySelector('.btn-add');
 const modalSuccess = document.getElementById('modalSuccess');
 const successText = document.getElementById('successText');
+const modalConfirm = document.getElementById('modalConfirm');
+const cancelBtn = document.getElementById('cancelDelete');
+const confirmBnt = document.getElementById('confirmDelete');
 const total = document.getElementById('total');
 const totalProducts = document.getElementById('totalProducts');
 const productInStock = document.getElementById('productInStock');
@@ -53,6 +56,35 @@ const initModalEventes = () => {
     addProductBtn.addEventListener('click', openModal);
     closeModalBtn.addEventListener('click', closeModal);
 };
+
+// Mostramos confirmación
+let deleteCallback = null;
+
+const openConfirmModal = (onConfirm) => {
+    deleteCallback = onConfirm;
+    // Ocultamos el formulario
+    formContainer.classList.remove('fade--visible');
+    formContainer.classList.add('fade--hidden');
+
+    // Mostramos la confirmación
+    modalConfirm.classList.remove('fade--hidden');
+    modalConfirm.classList.add('fade--visible');
+
+    // Arbimos el modal
+    openModal();
+}
+
+cancelBtn.addEventListener('click', () => {
+    closeModal();
+    resetModalState();
+});
+
+confirmBnt.addEventListener('click', () => {
+    if (deleteCallback) deleteCallback();
+
+    closeModal();
+    resetModalState();
+})
 
 /* Inputs */
 
@@ -172,6 +204,9 @@ const resetModalState = () => {
     // Ocultamos el mensaje de confirmación
     modalSuccess.classList.add('fade--hidden');
     modalSuccess.classList.remove('fade--visible');
+    // Ocultamos la confirmación
+    modalConfirm.classList.add('fade--hidden');
+    modalConfirm.classList.remove('fade--visible');
 }
 
 /* Mostramos los datos */
@@ -300,5 +335,6 @@ export {
     initModalEventes, validateForm, closeModal,
     getFormData, renderProducts, openModal, fillForm,
     setFormMode, renderTotal, renderTotalStock,
-    renderSummary, renderStockBars, showSuccessState
+    renderSummary, renderStockBars, showSuccessState,
+    openConfirmModal
 };
