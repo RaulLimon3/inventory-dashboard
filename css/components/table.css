@@ -7,6 +7,13 @@ table {
     background: var(--gray-100);
 }
 
+.table-heading th {
+    position: sticky;
+    top: 0;
+    background: var(--gray-100);
+    z-index: 50;
+}
+
 .table-col {
     padding: var(--space-3);
     text-align: left;
