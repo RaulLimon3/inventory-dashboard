@@ -211,13 +211,14 @@ const renderStockSummary = (input, stockSummary) => {
 
 // Hacemos la grafica dinamica
 
-const renderStockBars = (summary, total) => {
+const renderStockBars = (summary) => {
+    const total = summary.inStock + summary.lowStock + summary.outOfStock;
     const inStock = total ? (summary.inStock / total) * 100 : 0;
     const lowStock = total ? (summary.lowStock / total) * 100 : 0;
     const outStock = total ? (summary.outOfStock / total) * 100 : 0;
-    inStockProgress.style.width = `${inStock * 10}%`;
-    lowStockProgress.style.width = `${lowStock * 10}%`;
-    outStockProgress.style.width = `${outStock * 10}%`; 
+    inStockProgress.style.width = `${inStock}%`;
+    lowStockProgress.style.width = `${lowStock}%`;
+    outStockProgress.style.width = `${outStock}%`; 
 }
 
 // Mostramos diseño dinamico para el status

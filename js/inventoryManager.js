@@ -17,6 +17,7 @@ export default class inventoryManager {
                 p.price
             );
             product.id = p.id;
+            Product.currentId = Math.max(Product.currentId, p.id + 1);
             return product;
         });
     }

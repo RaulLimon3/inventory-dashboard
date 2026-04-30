@@ -33,7 +33,6 @@ statusInput.addEventListener('change', (e) => {
 
 // Calculamos el porcentaje
 const summary = manager.getStockSummary();
-const total = manager.getTotalStock();
 
 // Mostramos los registros guardados
 renderProducts(manager.getProducts());
@@ -47,7 +46,8 @@ renderTotalStock(manager.getTotalStock());
 // Mostramos el total de productos en stock
 renderSummary(manager.getStockSummary());
 
-renderStockBars(summary, total);
+// Mostramos la barra dinamica de productos
+renderStockBars(summary);
 
 // Espreamos a que de clic en submit
 form.addEventListener('submit', (e) => {
