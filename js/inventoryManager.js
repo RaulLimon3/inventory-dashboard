@@ -1,10 +1,24 @@
 // Importamos nuestra clase principal
 import Product from "./product.js";
+// Importamos el almacenamiento de localStorage
+import { saveToStorage, loadFromStorage } from "./storage.js";
 
 // Manejamos los datos 
 export default class inventoryManager {
     constructor() {
-        this.products = this.loadFromStorage();
+        // Accedemos al localStorage
+        const data = loadFromStorage();
+        // Extraemos los datos de localStorage
+        this.products = data.map(p => {
+            const product = new Product(
+                p.name,
+                p.category,
+                p.stock,
+                p.price
+            );
+            product.id = p.id;
+            return product;
+        });
     }
 
     // Obtenemos los datos
@@ -16,14 +30,14 @@ export default class inventoryManager {
     addProduct(name, category, stock, price) {
         const product = new Product(name, category, stock, price);
         this.products.push(product)
-        this.saveToStorage();
+        saveToStorage(this.products);
         return product;
     }
 
     // Borramos el producto
     removeProduct(id) {
         this.products = this.products.filter(product => product.id !== id);
-        this.saveToStorage();
+        saveToStorage(this.products);
     }
 
     // Actualizar el producto
@@ -35,7 +49,7 @@ export default class inventoryManager {
         product.stock = stock;
         product.price = price;
 
-        this.saveToStorage();
+        saveToStorage(this.products);
     }
 
     // Calculamos el total del inventario
@@ -66,40 +80,8 @@ export default class inventoryManager {
         return this.products.filter(product => product.status === status);
     }
 
-    getStockProducts() {
-        return this.products.filter(product => product.status === 'In stock').length;
-    }
-    
     // Obtenemos el id del producto
     getProductById(id) {
         return this.products.find(p => p.id === id);
-    }
-
-    // Guardamos en localStorage
-    saveToStorage() {
-        localStorage.setItem('products', JSON.stringify(this.products));
-    }
-
-    // Cargamos los datos
-    loadFromStorage() {
-        // Verificamos que haya datos en el localStorage
-        const data = localStorage.getItem('products');
-        // Si no hay, lo guardamos en un arreglo
-        if (!data) return [];
-
-        // Convertimos el dato a un objeto JS
-        const parseData = JSON.parse(data);
-
-        // Extraemos los datos
-        return parseData.map(p => {
-            const product = new Product(
-                p.name,
-                p.category,
-                p.stock,
-                p.price
-            );
-            product.id = p.id;
-            return product;
-        });
     }
 }
