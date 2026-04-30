@@ -27,6 +27,19 @@
     text-align: center;
 }
 
-.hidden {
-    display: none;
+.fade {
+    transition: all 0.25s ease;
+}
+
+.fade--hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    position: absolute;
+}
+
+.fade--visible {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
 }

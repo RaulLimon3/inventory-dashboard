@@ -150,9 +150,11 @@ const getFormData = () => {
 
 const showSuccessState = (isEdit) => {
     // Ocultamos nuestro formulario
-    formContainer.classList.add('hidden');
+    formContainer.classList.remove('fade--visible');
+    formContainer.classList.add('fade--hidden');
     // Mostramos el mensaje
-    modalSuccess.classList.remove('hidden');
+    modalSuccess.classList.remove('fade--hidden');
+    modalSuccess.classList.add('fade--visible');
     successText.textContent = isEdit ? 
         'Product updated successfully' : 'Product added successfully';
     // Cerramos despues de un tiempo el modal
@@ -164,8 +166,12 @@ const showSuccessState = (isEdit) => {
 
 // Reseteamos valores del modal
 const resetModalState = () => {
-    formContainer.classList.remove('hidden');
-    modalSuccess.classList.add('hidden');
+    // Mostramos el formulario
+    formContainer.classList.add('fade--visible');
+    formContainer.classList.remove('fade--hidden');
+    // Ocultamos el mensaje de confirmación
+    modalSuccess.classList.add('fade--hidden');
+    modalSuccess.classList.remove('fade--visible');
 }
 
 /* Mostramos los datos */
