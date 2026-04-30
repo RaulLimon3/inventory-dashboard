@@ -3,7 +3,7 @@ import inventoryManager from "./inventoryManager.js";
 import { closeModal, fillForm, getFormData, initModalEventes, 
     openConfirmModal, 
     openModal, renderProducts, renderStockBars, renderSummary, renderTotal, 
-    renderTotalStock, setFormMode, showSuccessState, validateForm} from "./ui.js";
+    renderTotalStock, setFormMode, showDeleteSuccess, showSuccessState, validateForm} from "./ui.js";
 
 // Mostramos el modal
 initModalEventes();

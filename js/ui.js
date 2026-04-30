@@ -82,8 +82,9 @@ cancelBtn.addEventListener('click', () => {
 confirmBnt.addEventListener('click', () => {
     if (deleteCallback) deleteCallback();
 
-    closeModal();
-    resetModalState();
+    showDeleteSuccess();
+    // closeModal();
+    // resetModalState();
 })
 
 /* Inputs */
@@ -193,8 +194,25 @@ const showSuccessState = (isEdit) => {
     setTimeout(() => {
         closeModal();
         resetModalState();
-    }, 1500)
+    }, 1500);
 };
+
+const showDeleteSuccess = () => {
+    // Ocultamos el formulario
+    formContainer.classList.remove('fade--visible');
+    formContainer.classList.add('fade--hidden');
+    // Ocultamos el mensaje de confirmación
+    modalConfirm.classList.remove('fade--visible');
+    modalConfirm.classList.add('fade--hidden');
+    // Mostramo el mensaje de confirmación
+    modalSuccess.classList.remove('fade--hidden');
+    modalSuccess.classList.add('fade--visible');
+    successText.textContent = 'Product deleted successfully';
+    setTimeout(() => {
+        closeModal();
+        resetModalState();
+    }, 1500);
+}
 
 // Reseteamos valores del modal
 const resetModalState = () => {
@@ -336,5 +354,5 @@ export {
     getFormData, renderProducts, openModal, fillForm,
     setFormMode, renderTotal, renderTotalStock,
     renderSummary, renderStockBars, showSuccessState,
-    openConfirmModal
+    openConfirmModal, showDeleteSuccess
 };
