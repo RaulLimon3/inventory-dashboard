@@ -148,6 +148,7 @@ const getFormData = () => {
 // Mostramos los productos
 const renderProducts = (products, isSearching = false) => {
 
+    // Eliminamos momentaneamente los productos
     const rows = table.querySelectorAll('.product-row');
     rows.forEach(row => row.remove());
 
@@ -158,9 +159,6 @@ const renderProducts = (products, isSearching = false) => {
         return;
     }
     emptyTable.style.display = 'none';
-
-    // Limpiamos la tabla
-    // table.innerHTML = '';
 
     // Mostramos los datos
     products.forEach(product => {
@@ -216,7 +214,6 @@ const renderStockSummary = (input, stockSummary) => {
 }
 
 // Hacemos la grafica dinamica
-
 const renderStockBars = (summary) => {
     const total = summary.inStock + summary.lowStock + summary.outOfStock;
     const inStock = total ? (summary.inStock / total) * 100 : 0;
@@ -241,6 +238,7 @@ const getStatusClass = (status) => {
     }
 }
 
+// Rellenamos el formulario para editar el producto
 const fillForm = (product) => {
     productInput.value = product.name;
     categorySelect.value = product.category;
@@ -248,6 +246,7 @@ const fillForm = (product) => {
     priceInput.value = product.price;
 };
 
+// Cambiamos el contenido del modal
 const setFormMode = (isEdit) => {
     if (isEdit) {
         modalTitle.textContent = 'Edit Product';
