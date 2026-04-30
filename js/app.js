@@ -2,7 +2,7 @@
 import inventoryManager from "./inventoryManager.js";
 import { closeModal, fillForm, getFormData, initModalEventes, 
     openModal, renderProducts, renderStockBars, renderSummary, renderTotal, 
-    renderTotalStock, setFormMode, validateForm} from "./ui.js";
+    renderTotalStock, setFormMode, showSuccessState, validateForm} from "./ui.js";
 
 // Mostramos el modal
 initModalEventes();
@@ -88,8 +88,10 @@ form.addEventListener('submit', (e) => {
     if (!validateForm()) return;
     // Extramos los datos del formulario
     const { name, category, stock, price } = getFormData();
+    // Guardamos el estado de nuestro modal
+    let isEdit = !!editProductId;
     // Verificamos la accion a realizar
-    if (editProductId) {
+    if (isEdit) {
         // Actualizamos el producto
         manager.updateProduct(editProductId, name, category, stock, price);
         editProductId = null;
@@ -102,7 +104,7 @@ form.addEventListener('submit', (e) => {
     // Limpiamos el formulario
     form.reset();
     // Cerramos el modal
-    closeModal()
+    showSuccessState(isEdit);
 });
 
 // Mostramos menu desplegable

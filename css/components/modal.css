@@ -51,3 +51,27 @@
     flex-direction: column;
     gap: var(--space-2);
 }
+
+.modal-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-gap);
+    text-align: center;
+}
+
+.check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-success);
+    color: var(--color-surface);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-lg);
+}
+
+.success {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+}

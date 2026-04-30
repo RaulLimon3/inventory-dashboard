@@ -10,8 +10,11 @@ const table = document.getElementById('tableBody');
 const emptyTable = document.getElementById('emptyTable');
 const message = document.getElementById('message');
 const form = document.querySelector('.form-product');
+const formContainer = document.querySelector('.formContainer');
 const modalTitle = document.querySelector('.modal-title');
 const modalBtn = document.querySelector('.btn-add');
+const modalSuccess = document.getElementById('modalSuccess');
+const successText = document.getElementById('successText');
 const total = document.getElementById('total');
 const totalProducts = document.getElementById('totalProducts');
 const productInStock = document.getElementById('productInStock');
@@ -143,6 +146,28 @@ const getFormData = () => {
     };
 };
 
+/* Mostramos mensaje de confirmación */
+
+const showSuccessState = (isEdit) => {
+    // Ocultamos nuestro formulario
+    formContainer.classList.add('hidden');
+    // Mostramos el mensaje
+    modalSuccess.classList.remove('hidden');
+    successText.textContent = isEdit ? 
+        'Product updated successfully' : 'Product added successfully';
+    // Cerramos despues de un tiempo el modal
+    setTimeout(() => {
+        closeModal();
+        resetModalState();
+    }, 1500)
+};
+
+// Reseteamos valores del modal
+const resetModalState = () => {
+    formContainer.classList.remove('hidden');
+    modalSuccess.classList.add('hidden');
+}
+
 /* Mostramos los datos */
 
 // Mostramos los productos
@@ -155,7 +180,7 @@ const renderProducts = (products, isSearching = false) => {
     // Verificamos que existan datos guardados
     if (products.length === 0) {
         emptyTable.style.display = 'table-row';
-        message.textContent = isSearching ? 'No results found' : 'No data available'; 
+        message.textContent = isSearching ? 'No results found' : 'No data available';
         return;
     }
     emptyTable.style.display = 'none';
@@ -221,7 +246,7 @@ const renderStockBars = (summary) => {
     const outStock = total ? (summary.outOfStock / total) * 100 : 0;
     inStockProgress.style.width = `${inStock}%`;
     lowStockProgress.style.width = `${lowStock}%`;
-    outStockProgress.style.width = `${outStock}%`; 
+    outStockProgress.style.width = `${outStock}%`;
 }
 
 // Mostramos diseño dinamico para el status
@@ -261,5 +286,5 @@ export {
     initModalEventes, validateForm, closeModal,
     getFormData, renderProducts, openModal, fillForm,
     setFormMode, renderTotal, renderTotalStock,
-    renderSummary, renderStockBars
+    renderSummary, renderStockBars, showSuccessState
 };
