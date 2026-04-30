@@ -11,6 +11,8 @@ initModalEventes();
 const form = document.querySelector('.form-product');
 // Accedemos a nuestro elemento para filtrar los productos
 const statusInput = document.getElementById('status');
+const searchBtn = document.getElementById('searchBtn');
+const searchbar = document.getElementById('searchbar');
 
 // Creamos nuestro objeto
 const manager = new inventoryManager();
@@ -19,15 +21,47 @@ let editProductId = null;
 
 // Siempre mostramos todos los productos
 let currentFilter = 'all';
+let currentSearch = '';
 
 // Creamos una funcion para aplicar los filtros
 const applyFilter = () => {
-    const filtered = manager.filterProducts(currentFilter);
-    renderProducts(filtered);
+    // Obtenemos los productos
+    let products = manager.getProducts();
+
+    // Filtramos por status
+    if (currentFilter !== 'all'){
+        products = manager.filterProducts(currentFilter)
+    }
+
+    // Filtramos por busqueda
+    if (currentSearch) {
+        products = products.filter(product =>
+            product.name.toLowerCase().includes(currentSearch) ||
+            product.sku.toLowerCase().includes(currentSearch)
+        );
+    }
+
+    // Mostramos productos
+    renderProducts(products);
 };
 
+// Aplicamos los filtros por status
 statusInput.addEventListener('change', (e) => {
     currentFilter = e.target.value;
+    applyFilter();
+});
+
+// Buscamos el producto o SKU
+searchBtn.addEventListener('click', () => {
+    // Extraemos la consulta
+    currentSearch = searchbar.value.trim().toLowerCase();
+    // Realizamos la busqueda
+    applyFilter();
+});
+
+// Limpiamos busqueda
+searchbar.addEventListener('input', (e) => {
+    currentSearch = e.target.value.trim().toLowerCase();
     applyFilter();
 });
 

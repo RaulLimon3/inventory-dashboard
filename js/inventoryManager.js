@@ -81,6 +81,23 @@ export default class inventoryManager {
         return this.products.filter(product => product.status === status);
     }
 
+    // Buscamos el producto por su nombre o SKU
+    searchProduct(query) {
+        // Extraemos la palabra 
+        const q = query.trim().toLowerCase();
+
+        // Verificamos si esta vacio
+        if (!q) return this.products;
+
+        // Buscamos el producto
+        return this.products.filter(product => {
+            return (
+                product.name.toLowerCase().includes(q) ||
+                product.sku.toLowerCase().includes(q)
+            );
+        });
+    }
+
     // Obtenemos el id del producto
     getProductById(id) {
         return this.products.find(p => p.id === id);
