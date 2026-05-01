@@ -229,6 +229,13 @@ const resetModalState = () => {
 
 /* Mostramos los datos */
 
+const CATEGORY_LABELS = {
+    electronics: 'Electronics',
+    clothesAndFootwear: 'Clothing and Footwear',
+    homeAndDecor: 'Home and Decor',
+    personal: 'Personal Care'
+}
+
 // Mostramos los productos
 const renderProducts = (products, isSearching = false) => {
 
@@ -260,7 +267,7 @@ const renderProducts = (products, isSearching = false) => {
         const statusClass = getStatusClass(product.status);
         row.innerHTML = `
             <td class="cell">${product.name}</td>
-            <td class="cell">${product.category}</td>
+            <td class="cell">${CATEGORY_LABELS[product.category]}</td>
             <td class="cell">${product.sku}</td>
             <td class="cell">${product.stock}</td>
             <td class="cell cell--status">
